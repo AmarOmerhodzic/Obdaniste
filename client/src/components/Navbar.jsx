@@ -1,34 +1,35 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
 return (
      <div>
-       <nav class="navbar navbar-expand-lg navbar-light shadow">
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+       <nav className="navbar navbar-expand-lg navbar-light shadow">
+  <div className="container">
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active text-black" aria-current="page" href="#">Home</a>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <NavLink className="nav-link active text-black" aria-current="page" to="/">Home</NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-black" href="#">O nama</a>
+        <li className="nav-item">
+          <NavLink className="nav-link text-black" to="/about">O nama</NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-black" href="#">Zaposlenici</a>
+        <li className="nav-item">
+          <NavLink className="nav-link text-black" to="/Zaposlenici">Zaposlenici</NavLink>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-black" href="#">Kontakt</a>
+        <li className="nav-item">
+          <NavLink className="nav-link text-black" to="/kontakt">Kontakt</NavLink>
         </li>
       </ul>
-      <a class="navbar-brand fw-bolder fs-4 mx-auto" href="#">Obdaniste Radost</a>
-      <button className="btn btn-outline-primary ms-auto px-4 rounded-pill" >
-            <i className="fa fa-sign-in me-1"></i> Prijava</button>
-      <button className="btn btn-outline-primary ms-2 px-4 rounded-pill" >
-     <i className="fa fa-user-plus me-2"></i>Registracija</button>
+      <NavLink className="navbar-brand fw-bolder fs-4 mx-auto" to="/">Obdaniste Radost</NavLink>
+      <NavLink to="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill" >
+            <i className="fa fa-sign-in me-1"></i> Prijava</NavLink>
+      <NavLink to="/register" className="btn btn-outline-primary ms-2 px-4 rounded-pill" >
+     <i className="fa fa-user-plus me-2"></i>Registracija</NavLink>
 
     </div>
   </div>
