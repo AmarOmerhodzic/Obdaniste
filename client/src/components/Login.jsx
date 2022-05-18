@@ -4,18 +4,18 @@ import axios from "axios";
 
 const Login = () => {
 
- // const {email, setEmail} = useState("");
- // const {password, setPassword} = useState("");
+  const {email, setEmail} = useState("");
+  const {password, setPassword} = useState("");
 
- /* const login = () => {
-    axios.post("http://localhost:3000/login", {
+  const login = () => {
+    axios.get("http://localhost:8001/login", {
       email: email,
       password: password,
     }).then((response) => {
       console.log(response);
     });
   };
-*/
+
 
   return (
     <div>
@@ -39,9 +39,9 @@ const Login = () => {
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email adresa</label>
                 <input type="email" 
-               // onChange={(e) => {
-               //   setEmail(e.target.value);
-               // }}
+                 onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 class="form-control" 
                 id="exampleInputEmail1" 
                 aria-describedby="emailHelp" />
@@ -51,9 +51,9 @@ const Login = () => {
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Šifra</label>
                 <input type="password" 
-               // onChange={(e) => {
-               //   setPassword(e.target.value);
-                //}}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 class="form-control" 
                 id="exampleInputPassword1" />
               </div>
@@ -63,7 +63,7 @@ const Login = () => {
                 <label class="form-check-label" for="exampleCheck1">Čekiraj</label>
               </div>
               <button type="submit" 
-             // onClick={login}
+               onClick={login}
               class="btn btn-primary">Potvrda</button>
             </form>
           </div>

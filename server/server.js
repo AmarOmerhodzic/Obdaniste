@@ -1,6 +1,7 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const UserModel = require('./models/Users.js')
 
 //App config
 const app = express();
@@ -17,12 +18,31 @@ const connection_url = `mongodb+srv://Amar:ZOG2tNpCoFKLVej5@cluster0.osup3.mongo
 mongoose.connect(connection_url);
 
 //API Endpoints
-app.get('/', (req,res) => res.status(200).send("Obdaniste Radost"));
+//Probao sam i get i post rade u thunderu/postman
+app.get('/login', (req,res) => {
+    UserModel.find({}, (err,result) => {
+        if(err){
+            res.json(err);
+        }else{
+            res.json(result);
+        }
+    });
+});
 
-/*
-app.post("/login",(req,res)=>{ 
-    
-});*/
+
+app.post("/register", async(req,res) => { 
+    let user = await UserModel.findOne({ email: req.body.email });
+    if (user) {
+        return res.status(400).send('Korisnik vec postoji!');
+    } else {
+        // Pvi dio da provjeri da li vec postoji korisnik
+        // Ovaj dio je za unos novog 
+        user = req.body
+        user = new UserModel(user);
+        await user.save();
+        res.send(user);
+    }
+});
 
 
 //listener
