@@ -1,21 +1,28 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 const Login = () => {
-
-  const {email, setEmail} = useState("");
-  const {password, setPassword} = useState("");
-
-  const login = () => {
+ // const navigate = useNavigate();
+ // navigate('/Loggedin')
+  const {email, setEmail} = useState('');
+  const {password, setPassword} = useState('');
+  const {listofusers, setlistofusers} = useState('');
+  
+  const login = (event) => {
+    event.preventDefault()
     axios.get("http://localhost:8001/login", {
       email: email,
       password: password,
     }).then((response) => {
       console.log(response);
+      
+      
     });
   };
-
+  
+  
 
   return (
     <div>
@@ -34,11 +41,12 @@ const Login = () => {
           </div>
           <div className="col-md-6 p-5">
             <h1 className="display-6 fw-bolder mb-5">PRIJAVA</h1>
-            <form>
+            <form onSubmit={login}>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email adresa</label>
-                <input type="email" 
+                <input type="email"
+                value={email}
                  onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -50,7 +58,8 @@ const Login = () => {
 
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Šifra</label>
-                <input type="password" 
+                <input type="password"
+                value={password} 
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
@@ -63,7 +72,7 @@ const Login = () => {
                 <label class="form-check-label" for="exampleCheck1">Čekiraj</label>
               </div>
               <button type="submit" 
-               onClick={login}
+              //onClick={navigate}
               class="btn btn-primary">Potvrda</button>
             </form>
           </div>
