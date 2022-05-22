@@ -1,18 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createHashHistory } from "history";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import {useNavigate} from "react-router-dom"
+import Loading from "./Loading";
+import ErrorMessage from "./ErrorMessage";
 
 const Login = () => {
- // const navigate = useNavigate();
- // navigate('/Loggedin')
-  const {email, setEmail} = useState('');
-  const {password, setPassword} = useState('');
-  const {listofusers, setlistofusers} = useState('');
+ const navigate = useNavigate();
   
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false)
+  
+  useEffect(() => {
+    
+    const userInfo = localStorage.getItem("userInfo");
+
+    if(userInfo){
+      navigate("/loggedin")
+    }
+
+
+  },[]);
+
   const login = (event) => {
     event.preventDefault()
-    axios.get("http://localhost:8001/login", {
+    axios.post("/api/users/login", {
       email: email,
       password: password,
     }).then((response) => {
@@ -21,7 +36,34 @@ const Login = () => {
       
     });
   };
-  
+  const submitHandler = async(event) => {
+    event.preventDefault();
+    try{
+      const config ={
+        headers: {
+          "Content-type":"application/json",
+          
+        },
+      };
+      setLoading(true);
+
+      const { data } = await axios.post(
+        "http://localhost:8001/api/users/login",
+        
+      {
+        email,
+        password,
+      },
+      config
+      );
+      console.log(data);
+      localStorage.setItem('userInfo', JSON.stringify(data))
+      setLoading(false);
+    }catch(error) {
+      setError(error.response.data.message);
+      setLoading(false);
+    }
+  };
   
 
   return (
@@ -41,7 +83,9 @@ const Login = () => {
           </div>
           <div className="col-md-6 p-5">
             <h1 className="display-6 fw-bolder mb-5">PRIJAVA</h1>
-            <form onSubmit={login}>
+            {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+            {loading && <Loading/>}
+            <form onSubmit={submitHandler}>
 
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email adresa</label>

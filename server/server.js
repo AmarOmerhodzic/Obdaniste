@@ -1,9 +1,12 @@
 const express = require("express");
+const dotenv = require("dotenv")
 const mongoose = require("mongoose");
 const cors = require("cors");
 const UserModel = require('./models/Users.js')
-
+const userRoutes = require('./routes/userRoutes')
+const { errorHandler, notFound } = require('./middleware/errorMiddleware')
 //App config
+dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -16,21 +19,23 @@ const connection_url = `mongodb+srv://Amar:ZOG2tNpCoFKLVej5@cluster0.osup3.mongo
 
 // DB config
 mongoose.connect(connection_url);
-
+app.use('/api/users',userRoutes);
+app.use(notFound);
+app.use(errorHandler);
 //API Endpoints
 //Probao sam i get i post rade u thunderu/postman
-app.get('/login', (req,res) => {
-    UserModel.find({}, (err,result) => {
+/*app.get('/login', (req,res) => {
+     UserModel.find({}, (err,result) => {
         if(err){
             res.json(err);
         }else{
             res.json(result);
         }
     });
-});
+});*/
+//app.use('/api/users',userRoutes);
 
-
-app.post("/register", async(req,res) => { 
+/*app.post("/register", async(req,res) => { 
     let user = await UserModel.findOne({ email: req.body.email });
     if (user) {
         return res.status(400).send('Korisnik vec postoji!');
@@ -42,7 +47,7 @@ app.post("/register", async(req,res) => {
         await user.save();
         res.send(user);
     }
-});
+});*/
 
 
 //listener

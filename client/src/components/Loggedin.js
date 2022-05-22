@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Loggedin() {
+export default function loggedin() {
+  
   return (
     <div>
       
     </div>
   )
 }
+

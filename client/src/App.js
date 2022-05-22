@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import Login from './components/Login';
 import Loggedin from './components/Loggedin';
 function App() {
-  
+  const [search, setSearch] = useState("");
   return (
     <>
     <Navbar/>
@@ -21,7 +21,11 @@ function App() {
       <Route exact  path="/Zaposlenici" element={<Zaposlenici/>}/>
       <Route exact  path="/kontakt" element={<Footer/>}/>
       <Route exact path="/login" element={<Login/>}/>
-      <Route exact path="/Loggedin" element={<Loggedin/>}/>
+      <Route exact  path="/loggedin"
+          component={({ history }) => (
+            <Loggedin search={search} history={history} />
+          )}
+        />
       {/*<Route exact  path="/register" component={Register}/> */}
       </Routes>
     </>
