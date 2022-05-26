@@ -31,7 +31,7 @@ const authUser = asyncHandler(async (req,res) => {
             gradStanovanja: user.gradStanovanja,
             dijeteBezRoditelja: user.dijeteBezRoditelja,
             samohraniILIrazvedeni: user.samohraniILIrazvedeni,
-            rom: user.rom,
+            rom: user.rom, //ne mogu se ne smijati na user.rom
             bitneNapomene: user.bitneNapomene,
             email: user.email,
             token:generateToken(user._id),
