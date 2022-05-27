@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Axios from "axios";
-const Register = () => {
+import {useNavigate} from "react-router-dom";
+const Register = ({history}) => {
   const [ime, setIme] = useState("");
   const [prezime, setPrezime] = useState("");
   const [imeRoditelja, setImeRoditelja] = useState("");
@@ -15,6 +16,18 @@ const Register = () => {
   const [samohraniILIrazvedeni, setSamohraniILIrazvedeni] = useState("");
   const [rom, setRom] = useState(true);
   const [bitneNapomene, setBitneNapomene] = useState("");
+
+  useEffect(() => {
+    
+    const userInfo = localStorage.getItem("userInfo");
+
+    if(userInfo){
+      history.push("/loggedin")
+    }
+
+
+  },[]);
+  const navigate = useNavigate();
 
   const createUser = (event) => {
     event.preventDefault();
@@ -35,6 +48,7 @@ const Register = () => {
       rom: rom,
       bitneNapomene: bitneNapomene,
     });
+    navigate('/loggedin');
   };
 
   return (

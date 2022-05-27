@@ -22,10 +22,8 @@ function App() {
         <Route exact path="/kontakt" element={<Footer />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route exact path="/loggedin" element={({ history }) => (
-          <Loggedin search={search} history={history} />
-          )}
-        />
+        <Route exact path="/loggedin" element={<Loggedin />} />
+        
     
       </Routes>
     </>

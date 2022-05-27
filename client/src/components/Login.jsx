@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom"
 import Loading from "./Loading";
 import ErrorMessage from "./ErrorMessage";
 
-const Login = () => {
+const Login = ({history}) => {
  const navigate = useNavigate();
   
   const [email, setEmail] = useState("");
@@ -19,7 +19,7 @@ const Login = () => {
     const userInfo = localStorage.getItem("userInfo");
 
     if(userInfo){
-      navigate("/loggedin")
+      history.push("/loggedin")
     }
 
 
@@ -58,6 +58,7 @@ const Login = () => {
       );
       console.log(data);
       localStorage.setItem('userInfo', JSON.stringify(data))
+      navigate('/loggedin')
       setLoading(false);
     }catch(error) {
       setError(error.response.data.message);
