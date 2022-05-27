@@ -1,5 +1,5 @@
 import "./App.css";
-import Register from "./components/Register"
+import Register from "./components/Register";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -22,14 +22,11 @@ function App() {
         <Route exact path="/kontakt" element={<Footer />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
-        <Route
-          exact
-          path="/loggedin"
-          component={({ history }) => (
-            <Loggedin search={search} history={history} />
+        <Route exact path="/loggedin" element={({ history }) => (
+          <Loggedin search={search} history={history} />
           )}
         />
-        {/*<Route exact  path="/register" component={Register}/> */}
+    
       </Routes>
     </>
   );
