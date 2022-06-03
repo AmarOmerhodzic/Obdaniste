@@ -16,23 +16,25 @@ const Register = ({history}) => {
   const [samohraniILIrazvedeni, setSamohraniILIrazvedeni] = useState("");
   const [rom, setRom] = useState(true);
   const [bitneNapomene, setBitneNapomene] = useState("");
-
+  const [currentUser,setCurrrentUser] = useState(undefined);
+  const [isLoaded,setIsLoaded] = useState(false);
   useEffect(() => {
-    
-    const userInfo = localStorage.getItem("userInfo");
-
-    if(userInfo){
-      history.push("/loggedin")
-    }
-
-
-  },[]);
+  const checkData = async () =>{
+    if(!localStorage.getItem('userInfo')){
+      navigate('/login')
+  }else{
+    setCurrrentUser(await JSON.parse(localStorage.getItem("userInfo")))
+    setIsLoaded(true)
+  }
+}
+checkData();
+   },[])
   const navigate = useNavigate();
 
-  const createUser = (event) => {
+  const createUser = async(event) => {
     event.preventDefault();
     console.log("hi");
-    Axios.post("http://localhost:8001/createUser", {
+    const { data }  = await Axios.post("http://localhost:8001/createUser", {
       ime: ime,
       prezime: prezime,
       imeRoditelja: imeRoditelja,
@@ -47,7 +49,10 @@ const Register = ({history}) => {
       samohraniILIrazvedeni: samohraniILIrazvedeni,
       rom: rom,
       bitneNapomene: bitneNapomene,
+    
     });
+    localStorage.setItem('userInfo', JSON.stringify(data))
+    console.log(data)
     navigate('/loggedin');
   };
 
