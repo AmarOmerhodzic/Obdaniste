@@ -22,37 +22,38 @@ const Loggedin=() => {
     <Container>
       <div class="row">
                     
-                    <div class="col-md-6" >
-                        <div class="profile-head pt-4">
+                    <div class="col-md-20" >
+                        <div class="profile-head pt-4 text-center ms-5">
                                     <h1>
-                                        Dobrodošli {userName.ime} {userName.prezime}
+                                    Dobrodošli {userName.ime} {userName.prezime}
                                     </h1>
                                     
                                     
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            
+                        </div>
+                    </div>
+                    <div class="col-md-20 text-end me-2 pe-5 " onClick={logout}>
+                        <input type="submit" class="profile-edit-btn" className="btn btn-outline-primary ms-2 px-4 rounded-pill " name="btnAddMore" value="Odjava" />
+                    </div>
+                </div>
+                <ul class="nav nav-tabs ms-4" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                 
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2 pt-3" onClick={logout}>
-                        <input type="submit" class="profile-edit-btn" className="btn btn-outline-primary ms-2 px-4 rounded-pill " name="btnAddMore" value="Odjava" />
-                    </div>
-                </div>
                 <div class="row">
                 
                     <div class="col-md-8">
                     
                     <div className='User'>
-                        <div class="col-md-4" >
-                        <div class="profile-img pt-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                        <div class="col-md-4 ms-3 pt-1" >
+                        <div class='profile-img pt-4 w-75 ms-4'>
+                            <img src="https://st2.depositphotos.com/4157265/43300/i/450/depositphotos_433004540-stock-photo-profile-picture-of-smiling-caucasian.jpg" alt="" class="rounded mx-auto d-block img-thumbnail" class="border border-primary w-100"/>
                             
                         </div>
                     </div>
-                            <div className='user-info'>
+                            <div className='user-info pt-4'>
                               
                                         <div class="row">
                                             <div class="col-md-6">
@@ -124,9 +125,10 @@ const Container = styled.div`
 .User{
   display: flex;
   width: 100vw;
+  
 }
 .user-info{
-  width: 50%;
+  width: 60%;
   box-shadow: 10px 5px 5px blue;
   border-radius: 10px;
   align-items: center;
