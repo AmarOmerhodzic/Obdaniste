@@ -25,7 +25,7 @@ const Loggedin=() => {
                     <div class="col-md-20" >
                         <div class="profile-head pt-4 text-center ms-5">
                                     <h1>
-                                    Dobrodošli {userName.ime} {userName.prezime}
+                                    Dobrodošli {userName.imeRoditelja} {userName.prezime}
                                     </h1>
                                     
                                     
@@ -60,7 +60,7 @@ const Loggedin=() => {
                                                 <label>Ime:</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{userName.ime}</p>
+                                                <p>{userName.imeRoditelja}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -105,7 +105,7 @@ const Loggedin=() => {
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Bitne Napomene:</label>
+                                                <label>Bitne napomene:</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{userName.bitneNapomene}</p>
@@ -129,7 +129,7 @@ const Container = styled.div`
 }
 .user-info{
   width: 60%;
-  box-shadow: 10px 5px 5px blue;
+  box-shadow: 10px 5px 5px #f59842;
   border-radius: 10px;
   align-items: center;
   justify-content: center;

@@ -21,7 +21,7 @@ const Footer = () => {
               
 
               <div className="col-2">
-                <h5>Obdaniste Radost</h5>
+                <h5>Obdanište Radost</h5>
                 <ul className="nav flex-column">
                   <li className="nav-item mb-2">
                     <a to="#" className="nav-link p-0 text-white">

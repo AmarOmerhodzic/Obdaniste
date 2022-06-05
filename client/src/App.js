@@ -10,7 +10,9 @@ import { useEffect, useState } from "react";
 import Login from "./components/Login";
 import Loggedin from "./components/Loggedin";
 function App() {
-  const [search, setSearch] = useState("");
+  useEffect(() => {
+    document.title = "Obdanište Radost"
+  }, [])
   return (
     <>
       <Navbar />

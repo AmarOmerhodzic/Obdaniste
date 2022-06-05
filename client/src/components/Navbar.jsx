@@ -25,7 +25,7 @@ return (
           <NavLink className="nav-link text-black" to="/kontakt">Kontakt</NavLink>
         </li>
       </ul>
-      <NavLink className="navbar-brand fw-bolder fs-4 mx-auto" to="/">Obdaniste Radost</NavLink>
+      <NavLink className="navbar-brand fw-bolder fs-4 mx-auto" to="/">Obdanište Radost</NavLink>
       <NavLink to="/login" className="btn btn-outline-primary ms-auto px-4 rounded-pill" >
             <i className="fa fa-sign-in me-1"></i> Prijava</NavLink>
       <NavLink to="/register" className="btn btn-outline-primary ms-2 px-4 rounded-pill" >

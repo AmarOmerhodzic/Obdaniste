@@ -25,6 +25,7 @@ const Register = ({history}) => {
   }else{
     setCurrrentUser(await JSON.parse(localStorage.getItem("userInfo")))
     setIsLoaded(true)
+    navigate('/loggedin')
   }
 }
 checkData();

@@ -18,7 +18,7 @@ const Login = ({history}) => {
     const userInfo = localStorage.getItem("userInfo");
 
     if(userInfo){
-      history.push("/loggedin")
+      navigate("/loggedin")
     }
 
 
