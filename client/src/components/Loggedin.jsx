@@ -48,8 +48,8 @@ const Loggedin=() => {
                     
                     <div className='User'>
                         <div class="col-md-4 ms-3 pt-1" >
-                        <div class='profile-img pt-4 w-75 ms-4'>
-                            <img src="https://st2.depositphotos.com/4157265/43300/i/450/depositphotos_433004540-stock-photo-profile-picture-of-smiling-caucasian.jpg" alt="" class="rounded mx-auto d-block img-thumbnail" class="border border-primary w-100"/>
+                        <div class='profile-img pt-5 w-100 ms-5'>
+                            <img src="/assets/slika.png" alt="" class="rounded mx-auto d-block img-thumbnail" class="border border-white w-75"/>
                             
                         </div>
                     </div>
