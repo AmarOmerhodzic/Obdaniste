@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 console.log("hi");
 const port = process.env.PORT || 8001;
-const connection_url = `mongodb+srv://Amar:ZOG2tNpCoFKLVej5@cluster0.osup3.mongodb.net/Obdaniste-db?retryWrites=true&w=majority`;
+const connection_url = process.env.MONGO_URL;
 
 
 app.post("/createUser", async (req, res) => {
